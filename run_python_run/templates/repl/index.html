@@ -7,3 +7,30 @@
   </p>
   <button>Run Python!</button>
 </form>
+
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Run id</th>
+      <th>Run status</th>
+      <th>Output</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for obj in object_list %}
+      <tr>
+        <td>{{ obj.id }}</td>
+        <td>{{ obj.run_id }}</td>
+        <td>{{ obj.run_status }}</td>
+        <td><pre>{{ obj.output }}</pre></td>
+        <td>
+          <a href="{% url 'repl:code-run-detail' code_run_id=obj.id %}">View</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
