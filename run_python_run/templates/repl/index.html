@@ -1,0 +1,9 @@
+<h1>REPL index</h1>
+
+<form method="POST" action="{% url 'repl:code-run' %}">
+  <p>
+    {{ code_run_form }}
+    {% csrf_token %}
+  </p>
+  <button>Run Python!</button>
+</form>
