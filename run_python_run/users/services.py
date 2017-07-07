@@ -47,9 +47,6 @@ def send_welcome_email(*, user: User) -> None:
 
 
 def send_notifications(*, user: User) -> None:
-    """
-    TODO: Iterate over notifications app in more smart way
-    """
     notify_slack(user=user)
 
 
