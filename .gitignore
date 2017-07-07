@@ -101,3 +101,5 @@ ENV/
 db.sqlite3
 
 *.swp
+
+run_python_run/emails
