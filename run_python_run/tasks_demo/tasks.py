@@ -1,5 +1,9 @@
 import os
 
+import time
+
+from random import randint
+
 from celery import shared_task, chain, group
 
 
@@ -31,6 +35,8 @@ def task_chains(start, stop):
     Tasks are executed one after another, sequentially
     Also defined as "chain of callbacks" -  [t1, t2, t3, ..., tn]
     t1 result will be passed to t2
+
+    More - http://docs.celeryproject.org/en/latest/userguide/canvas.html#chains
     """
     tasks = [add.s(x=start, y=start)]
 
@@ -46,7 +52,10 @@ def task_chains(start, stop):
 @shared_task
 def task_groups(sums):
     """
-    Tasks are executed in parallel. Order is not preserved
+    Tasks are executed in parallel.
+    Order of execution does not need to match order of calling.
+
+    More - http://docs.celeryproject.org/en/latest/userguide/canvas.html#groups
     """
 
     tasks = [add.s(x=x, y=y) for x, y in sums]
@@ -62,3 +71,26 @@ def task_group_with_chains(x, y, z):
              task_chains.s(start=z, stop=10 * z)]
 
     return group(tasks).delay()
+
+
+@shared_task(bind=True, max_retries=None)
+def retry_task(self):
+    """
+    http://docs.celeryproject.org/en/latest/userguide/tasks.html#retrying
+    """
+    n = randint(1, 100)
+    print('Rolled. Got {n}'.format(n=n))
+
+    """
+    From Celery Note:
+    Although the task will never return above as retry raises an exception to notify the worker, we use raise in front of the retry to convey that the rest of the block won’t be executed.
+    """
+    if n > 4:
+        print('Above 4. Retrying. Better luck next time!')
+        raise self.retry(countdown=1)
+
+
+@shared_task
+def task_blocker():
+    while True:
+        time.sleep(1)
