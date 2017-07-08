@@ -12,7 +12,14 @@ To run:
 2. `python manage.py migrate`
 3. If you want to have Slack notifications, setup [Incoming Webhook](https://api.slack.com/incoming-webhooks)
 4. `python manage.py runserver`
-5. Open `localhost:8000`
+5. Create superuser for accessing the Django admin - `python manage.py createsuperuser`
+6. Open `localhost:8000`
+
+The system is a simple "Online Python REPL" that uses a grader for running the Python code - <https://github.com/HackSoftware/HackGrader>
+
+The grader location for EuroPython training is here - <https://st-grader.hackbulgaria.com/>
+
+**For example purposes, this grader instance has no API authentication.**
 
 ## The task
 
@@ -30,6 +37,8 @@ To do so, you can easily make another branch and work there.
 ```bash
 $ git checkout -b solution
 ```
+
+Celery tasks should be located in a `tasks.py` module in each app.
 
 ```
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
