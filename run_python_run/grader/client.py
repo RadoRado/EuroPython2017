@@ -10,11 +10,11 @@ from django.conf import settings
 
 
 def poll_for_result(*, check_url: str) -> Dict[str, str]:
-    response = requests.get(check_url, timeout=2)
+    response = requests.get(check_url)
 
     while response.status_code == 204:
         run_status = response.headers['X-Run-Status']
-        response = requests.get(check_url, timeout=2)
+        response = requests.get(check_url)
 
         time.sleep(1)
 
@@ -35,7 +35,7 @@ def run_python(*, code: str) -> Dict[str, str]:
         }
     }
 
-    response = requests.post(settings.GRADER_SUBMIT_URL, json=payload, timeout=2)
+    response = requests.post(settings.GRADER_SUBMIT_URL, json=payload)
 
     if response.status_code not in [200, 202]:
         raise ValueError(response.text)

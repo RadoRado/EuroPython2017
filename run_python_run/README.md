@@ -16,8 +16,35 @@ To run:
 
 ## Celery
 
-In ordet to start celery, you need to execute the following command, at the level of `manage.py`:
+In order to start celery, you need to execute the following command, at the level of `manage.py`:
 
 ```bash
 $ celery -A run_python_run worker -E --loglevel=info
+```
+
+### Examples:
+
+All examples are run in `python manage.py shell` with the following imports:
+
+```python
+from tasks_demo.tasks import add, task_signatures, task_chains, task_groups
+```
+
+Chains:
+
+```python
+task_chains(1, 10)
+```
+
+Groups:
+
+```python
+task_groups.delay([(x, x) for x in range(100)])
+add.delay(1, 2).get()
+```
+
+Combining chains and groups:
+
+```python
+task_group_with_chains.delay(1, 2, 3)
 ```

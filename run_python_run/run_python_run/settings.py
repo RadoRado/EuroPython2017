@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
     'repl.apps.ReplConfig',
+    'tasks_demo.apps.TasksDemoConfig',
     'django_celery_results'
 ]
 
