@@ -16,9 +16,25 @@ To run:
 
 ## The task
 
+**LOOK HERE**
+```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
 Your task is to turn this synchronous Django code into better-structured Django + Celery code.
 
 All external calls should be done by Celery.
+
+To do so, you can easily make another branch and work there.
+
+```bash
+$ git checkout -b solution
+```
+
+```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+**LOOK HERE**
 
 ## Celery
 
