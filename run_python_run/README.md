@@ -14,6 +14,7 @@ To run:
 4. `python manage.py runserver`
 5. Create superuser for accessing the Django admin - `python manage.py createsuperuser`
 6. Open `localhost:8000`
+7. For real-time monitoring of Celery, you can use `flower` - <https://github.com/mher/flower> - `pip install flower` + `flower --port=5555`. Then open `localhost:5555`
 
 The system is a simple "Online Python REPL" that uses a grader for running the Python code - <https://github.com/HackSoftware/HackGrader>
 
