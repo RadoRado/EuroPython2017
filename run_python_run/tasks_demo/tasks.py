@@ -94,3 +94,15 @@ def retry_task(self):
 def task_blocker():
     while True:
         time.sleep(1)
+
+
+@shared_task
+def remote_task_debugger():
+    """
+    http://docs.celeryproject.org/en/latest/userguide/debugging.html
+    http://docs.celeryproject.org/en/latest/reference/celery.contrib.rdb.html
+    """
+    from celery.contrib import rdb
+    rdb.set_trace()
+
+    return 42

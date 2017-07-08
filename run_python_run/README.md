@@ -69,37 +69,37 @@ from tasks_demo.tasks import (
   task_groups,
   task_group_with_chains,
   retry_task,
-  task_blocker
+  task_blocker,
+  remote_task_debugger
 )
 ```
 
-Chains:
+**Chains:**
 
 ```python
 task_chains(1, 10)
 ```
 
-Groups:
+**Groups:**
 
 ```python
 task_groups.delay([(x, x) for x in range(100)])
 add.delay(1, 2).get()
 ```
 
-Combining chains and groups:
+**Combining chains and groups:**
 
 ```python
 task_group_with_chains.delay(1, 2, 3)
 ```
 
-
-Task retrying:
+**Task retrying:**
 
 ```python
 retry_task.delay()
 ```
 
-Block everything:
+**Block everything:**
 
 ```python
 task_blocker.delay()
@@ -108,6 +108,18 @@ task_blocker.delay()
 task_blocker.delay()
 
 add.delay(1, 2)
+```
+
+**Remote task debugging:**
+
+```python
+remote_task_debugger.delay()
+```
+
+Then see celery log for port and:
+
+```bash
+$ telnet localhost 6900  # pick the port from logs
 ```
 
 ### Additional resources
