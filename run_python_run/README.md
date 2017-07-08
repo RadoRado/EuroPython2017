@@ -12,3 +12,12 @@ To run:
 2. `python manage.py migrate`
 3. If you want to have Slack notifications, setup [Incoming Webhook](https://api.slack.com/incoming-webhooks)
 4. `python manage.py runserver`
+
+
+## Celery
+
+In ordet to start celery, you need to execute the following command, at the level of `manage.py`:
+
+```bash
+$ celery -A run_python_run worker -E --loglevel=info
+```

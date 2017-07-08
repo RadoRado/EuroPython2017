@@ -2,3 +2,6 @@ Django==1.11.3
 django-environ==0.4.3
 ipdb==0.10.3
 requests==2.18.1
+
+celery==4.0.2
+django-celery-results==1.0.1

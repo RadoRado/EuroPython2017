@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
-    'repl.apps.ReplConfig'
+    'repl.apps.ReplConfig',
+    'django_celery_results'
 ]
 
 MIDDLEWARE = [
@@ -134,10 +135,6 @@ EMAIL_FILE_PATH = BASE_DIR + '/emails'
 
 # Notification configuration
 
-"""
-TODO: Use env variables
-"""
-
 SLACK_WEB_HOOK = env('SLACK_WEB_HOOK', default='')
 SLACK_CHANNEL = env('SLACK_CHANNEL', default='#general')
 
@@ -145,3 +142,9 @@ SLACK_CHANNEL = env('SLACK_CHANNEL', default='#general')
 
 GRADER_URL = 'https://st-grader.hackbulgaria.com/'
 GRADER_SUBMIT_URL = GRADER_URL + '/grade'
+
+# Celery configuration
+
+CELERY_BROKER_URL = 'amqp://guest:guest@localhost//'
+CELERY_RESULT_BACKEND = 'django-db'
+
