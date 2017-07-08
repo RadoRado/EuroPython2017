@@ -46,6 +46,12 @@ Celery tasks should be located in a `tasks.py` module in each app.
 ```
 **LOOK HERE**
 
+## Talking points
+
+* What is Celery? Brokers / Result backends
+* Serialization
+* Running tasks
+
 ## Celery
 
 * You need RabbitMQ. For installation, [check here](http://www.rabbitmq.com/download.html)
