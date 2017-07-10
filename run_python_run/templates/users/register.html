@@ -1,7 +1,17 @@
-<h1>Registration</h1>
+{% extends "base.html" %}
 
-<form action="" method="POST">
-  {{ form }}
-  {% csrf_token %}
-  <button>Register</button>
-</form>
+{% block content %}
+  <h1>Registration</h1>
+
+  <div>
+    <form action="" method="POST">
+      {{ form }}
+      {% csrf_token %}
+      <button>Register</button>
+    </form>
+  </div>
+
+  <div>
+    <a href="{% url 'users:login' %}">Or login</a>
+  </div>
+{% endblock content %}

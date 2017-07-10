@@ -1,36 +1,40 @@
-<h1>REPL index</h1>
+{% extends "base.html" %}
 
-<form method="POST" action="{% url 'repl:code-run' %}">
-  <p>
-    {{ code_run_form }}
-    {% csrf_token %}
-  </p>
-  <button>Run Python!</button>
-</form>
+{% block content %}
+  <h1>REPL index</h1>
 
-<hr />
+  <form method="POST" action="{% url 'repl:code-run' %}">
+    <p>
+      {{ code_run_form }}
+      {% csrf_token %}
+    </p>
+    <button>Run Python!</button>
+  </form>
 
-<table>
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Run id</th>
-      <th>Run status</th>
-      <th>Output</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for obj in object_list %}
+  <hr />
+
+  <table>
+    <thead>
       <tr>
-        <td>{{ obj.id }}</td>
-        <td>{{ obj.run_id }}</td>
-        <td>{{ obj.run_status }}</td>
-        <td><pre>{{ obj.output }}</pre></td>
-        <td>
-          <a href="{% url 'repl:code-run-detail' code_run_id=obj.id %}">View</a>
-        </td>
+        <th>Id</th>
+        <th>Run id</th>
+        <th>Run status</th>
+        <th>Output</th>
+        <th>Actions</th>
       </tr>
-    {% endfor %}
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      {% for obj in object_list %}
+        <tr>
+          <td>{{ obj.id }}</td>
+          <td>{{ obj.run_id }}</td>
+          <td>{{ obj.run_status }}</td>
+          <td><pre>{{ obj.output }}</pre></td>
+          <td>
+            <a href="{% url 'repl:code-run-detail' code_run_id=obj.id %}">View</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}

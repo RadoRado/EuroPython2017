@@ -1,9 +1,13 @@
-<h1>Code run detail</h1>
+{% extends "base.html" %}
 
-<p>Run id: {{ object.run_id }}</p>
-<p>Run status: {{ object.run_status }} </p>
-<p>Output:</p>
+{% block content %}
+  <h1>Code run detail</h1>
 
-<pre>
-{{ object.output }}
-</pre>
+  <p>Run id: {{ object.run_id }}</p>
+  <p>Run status: {{ object.run_status }} </p>
+  <p>Output:</p>
+
+  <pre>
+  {{ object.output }}
+  </pre>
+{% endblock content %}
